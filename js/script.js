@@ -8,10 +8,8 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 
 // 1. dichiaro l'array che conterrà i numeri del computer
 var numeriComputer = [];
-var numeriUtente = [];
-var numeroUtente;
 // 2. generazione numeri per il computer casuali da inserire nell'array
-for (var i = 0; i < 16; i++){
+while (numeriComputer.length < 16){
   var numero = generaNumeroRandom(0, 100);
   // uso la funzione per non ripetere i numeri
   var cerca = inArray(numeriComputer, numero);
@@ -35,3 +33,19 @@ function inArray(array, element) {
   }
   return trovato;
 }
+// 3. chiedo all'utente di inserire dei numeri tra 0 e 100
+var numeriUtente = [];
+var numeroUtente;
+var possibilita = 5
+var presente = false;
+
+while ( numeriUtente.length < possibilita && presente == false){
+  numeroUtente = parseInt(prompt("Inserisci un numero tra 0 e 100"));
+  numeriUtente.push(numeroUtente);
+  // controllo se i numeri inseriti non sono presenti nei numeri del computer
+  if (inArray(numeriComputer, numeroUtente) == true){
+    presente = true;
+    alert("Hai inserito il numero bomba, hai perso!");
+  }
+}
+console.log(numeriUtente);
