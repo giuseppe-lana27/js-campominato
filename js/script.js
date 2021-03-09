@@ -33,19 +33,26 @@ function inArray(array, element) {
   }
   return trovato;
 }
-// 3. chiedo all'utente di inserire dei numeri tra 0 e 100
+// 3. chiedo all'utente di inserire dei numeri tra 1 e 100
 var numeriUtente = [];
 var numeroUtente;
-var possibilita = 5
+var possibilita = 84;
 var presente = false;
 
 while ( numeriUtente.length < possibilita && presente == false){
-  numeroUtente = parseInt(prompt("Inserisci un numero tra 0 e 100"));
+  numeroUtente = parseInt(prompt("Inserisci un numero tra 1 e 100"));
   numeriUtente.push(numeroUtente);
   // controllo se i numeri inseriti non sono presenti nei numeri del computer
   if (inArray(numeriComputer, numeroUtente) == true){
     presente = true;
     alert("Hai inserito il numero bomba, hai perso!");
+  } else if (isNaN(numeroUtente)){
+    numeroUtente = parseInt(prompt("Inserisci un valore numerico tra 1 e 100"));
+  } else if (numeroUtente < 1 || numeroUtente > 100){
+    numeroUtente = parseInt(prompt("Inserisci un altro numero tra 1 e 100"));
+    numeriUtente.push(numeroUtente);
+  } else if (numeriUtente.includes(numeroUtente)){
+    numeroUtente = parseInt(prompt("Inserisci un numero diverso dal precedente, sempre tra 1 e 100"));
   }
 }
 console.log(numeriUtente);
