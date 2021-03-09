@@ -7,3 +7,16 @@ La partita termina quando il giocatore inserisce un numero “vietato” o raggi
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito. */
 
 // 1. dichiaro l'array che conterrà i numeri del computer
+var numeriComputer = [];
+var numeriUtente = [];
+var numeroUtente;
+// 2. generazione numeri per il computer casuali da inserire nell'array
+for (var i = 0; i < 16; i++){
+  var numero = generaNumeroRandom(0, 100);
+  numeriComputer.push(numero);
+}
+console.log(numeriComputer);
+
+function generaNumeroRandom(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
