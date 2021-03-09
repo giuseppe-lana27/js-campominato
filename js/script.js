@@ -13,10 +13,25 @@ var numeroUtente;
 // 2. generazione numeri per il computer casuali da inserire nell'array
 for (var i = 0; i < 16; i++){
   var numero = generaNumeroRandom(0, 100);
-  numeriComputer.push(numero);
+  // uso la funzione per non ripetere i numeri
+  var cerca = inArray(numeriComputer, numero);
+  if ( cerca == false){
+    numeriComputer.push(numero);
+  }
 }
 console.log(numeriComputer);
-
+ // funzioni per genereare numeri random e ricerca ripetizioni
 function generaNumeroRandom(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function inArray(array, element) {
+  var i = 0;
+  var trovato = false;
+  while (i < array.length && trovato == false) {
+    if (array[i] == element) {
+      trovato = true;
+    }
+    i++;
+  }
+  return trovato;
 }
